@@ -50,7 +50,7 @@ function toggleYAMLField(event)
 
 </script>
 <template>
-<div class="container">
+<div >
   <div class="row">
     <div class="col">
       <button role="button" class="btn btn-primary" @click="toggleYAMLField">{{YAMLField.label}}</button>
@@ -61,15 +61,17 @@ function toggleYAMLField(event)
       <textarea class="form-control"  style="width: 100%;height: 400px;" v-model="YAMLData"></textarea>
     </div>
   </div>
+  <div class="row"><div class="col">&nbsp;</div></div>
   <div class="row">
-    <div class="col">
+    <div class="col-sm-3">
       <button class="btn btn-primary" role="button" @click="setEditorValue">Load from YAML to form</button>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8">
       <button class="btn btn-primary" role="button" @click="setYAMLValue">Load from form to YAML</button>
     </div>
-    <div class="col">
-      
-    </div>
   </div>
+  <div class="row"><div class="col">&nbsp;</div></div>
   <div class="row">
     <div id="editor_holder"></div>
   </div>

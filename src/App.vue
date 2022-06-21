@@ -1,17 +1,19 @@
 <script setup>
 import Editor from "./components/Editor.vue";
+import IntroText from "./components/IntroText.vue";
 </script>
 
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Top navbar</a>
+    <img src="./assets/icons/ipmdlogo.png" style="height: 30px; padding-right: 20px;"/>
+    <a class="navbar-brand" href="#">DSS Metadata file editor</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
+        <!--li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
@@ -19,17 +21,17 @@ import Editor from "./components/Editor.vue";
         </li>
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
-        </li>
+        </li-->
       </ul>
-      <form class="d-flex" role="search">
+      <!--form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form-->
     </div>
   </div>
 </nav>
-
 <main class="container">
+  <IntroText/>
   <Editor/>
 </main>
 </template>
