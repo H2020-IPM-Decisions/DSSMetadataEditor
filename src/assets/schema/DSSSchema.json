@@ -37,7 +37,7 @@
         "name": {
             "id": "#/properties/name",
             "type": "string",
-            "title": "The DSS name",
+            "title": "The DSS name [1]",
             "description": "The name of the DSS, e.g. \"VIPS\", \"ADAS DSS\"",
             "default": "",
             "examples": [
@@ -102,7 +102,7 @@
                 "name": {
                     "id": "#/properties/organization/properties/name",
                     "type": "string",
-                    "title": "Organization name",
+                    "title": "Organization name [2]",
                     "description": "The name of the organization, e.g. \"NIBIO\" or \"ADAS\"",
                     "default": "",
                     "examples": [
@@ -112,7 +112,7 @@
                 "country": {
                     "id": "#/properties/organization/properties/country",
                     "type": "string",
-                    "title": "Organization country",
+                    "title": "Organization country [3]",
                     "description": "The country of the organization's main headquarters",
                     "default": "",
                     "examples": [
@@ -182,7 +182,7 @@
                 "type": "object",
                 "properties": {
                             "name": {
-                                "title": "Model name",
+                                "title": "Model name [4]",
                                 "description": "The name of the model, e.g. \"Carrot rust fly temperature model\"",
                                 "type": "string",
                                 "examples": [
@@ -191,7 +191,7 @@
                             },
                             "id": {
                                 "type": "string",
-                                "title": "Model ID",
+                                "title": "Model ID [5]",
                                 "description": "A unique ID for the model in the namespace of the DSS. E.g. \"PSILARTEMP\"",
                                 "default": "",
                                 "examples": [
@@ -238,12 +238,23 @@
                                     "https://www.vips-landbruk.no/forecasts/models/PSILARTEMP/"
                                 ]
                             },
+                            "purpose": {
+                                "id": "#/properties/models/items/anyOf/0/properties/purpose",
+                                "type": "string",
+                                "title": "Purpose of the model [6]",
+                                "description": "A short description of the model",
+                                "default": "",
+                                "examples": [
+                                    "Estimates risk of flight and egg laying in pome fruit"
+                                ]
+                            },
                             "description": {
                                 "id": "#/properties/models/items/anyOf/0/properties/description",
                                 "type": "string",
-                                "title": "Description",
+                                "title": "Description [7]",
                                 "description": "A concise description of the model",
                                 "default": "",
+                                "format": "textarea",
                                 "examples": [
                                     "The warning system model «Carrot rust fly temperature» is based on a Finnish temperature-based model (Markkula et al, 1998; Tiilikkala & Ojanen, 1999; Markkula et al, 2000). The model determines the start of the flight period for the 1st and 2nd generation of carrot rust fly based on accumuleted degree-days (day-degrees) over a base temperature of 5,0 °C. VIPS uses the model for the 1st generation only. \nStandard air temperature (temperature measured 2 m above ground) is used in the model. Degree-days are defined for this model as the sum of the difference between a base temperature of 5,0 °C and the mean temperature for all days with a temperature >5,0 °C, in other words (daily mean temperature – 5,0 °C) from 1 March (beginning when the ground has thawed).\n"
                                 ]
@@ -278,7 +289,7 @@
                             "pests": {
                                 "id": "#/properties/models/items/anyOf/0/properties/pests",
                                 "type": "array",
-                                "title": "List of relevant pests (EPPO codes)",
+                                "title": "List of relevant pests (EPPO codes) [8]",
                                 "description": "A list of EPPO codes (https://gd.eppo.int/) for the pests predicted by this model. E.g. [\"PSILRO\"]",
                                 "default": [],
                                 "examples": [
@@ -295,7 +306,7 @@
                             "crops": {
                                 "id": "#/properties/models/items/anyOf/0/properties/crops",
                                 "type": "array",
-                                "title": "List of relevant crops (EPPO codes)",
+                                "title": "List of relevant crops (EPPO codes) [9]",
                                 "description": "A list of EPPO codes (https://gd.eppo.int/) for the crops in which this model predicts pests. E.g. [\"DAUCS\"]",
                                 "default": [],
                                 "examples": [
@@ -333,7 +344,7 @@
                                             ],
                                             "properties": {
                                                 "name": {
-                                                    "title": "Author name",
+                                                    "title": "Author name [10]",
                                                     "id": "#/properties/models/items/anyOf/0/properties/authors/items/anyOf/0/properties/name",
                                                     "type": "string"
                                                 },
@@ -343,7 +354,7 @@
                                                     "type": ["string","null"]
                                                 },
                                                 "organization": {
-                                                    "title": "Author organization",
+                                                    "title": "Author organization [11]",
                                                     "id": "#/properties/models/items/anyOf/0/properties/authors/items/anyOf/0/properties/organization",
                                                     "type": ["string","null"]
                                                 }
@@ -597,7 +608,7 @@
                                     "countries": {
                                         "id": "#/properties/models/items/anyOf/0/properties/valid_spatial/properties/countries",
                                         "type": "array",
-                                        "title": "List of countries (country codes)",
+                                        "title": "List of countries (country codes) [12]",
                                         "description": "ISO-3166-1 Three-letter country codes https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes",
                                         "additionalItems": false,
                                         "items": {
@@ -674,7 +685,7 @@
                                     "warning_status_interpretation": {
                                         "id": "#/properties/models/items/anyOf/0/properties/output/properties/warning_status_interpretation",
                                         "type": "array",
-                                        "title": "Warning status interpretation",
+                                        "title": "Warning status interpretation [13]",
                                         "description": "A list of texts helping the user to interpret the different warning statuses (green, yellow, red) in the given context. Ordering is important. The items relate to the statuses in this order: [WARNING NOT APPLICABLE, MISSING DATA, GREEN STATUS, YELLOW STATUS, RED STATUS] ",
                                         "additionalItems": false,
                                         "minItems": 5,
