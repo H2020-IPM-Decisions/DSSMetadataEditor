@@ -26,19 +26,19 @@
             <h4>Index of user visible parameters</h4>
             <p>Parameters marked (*) appear to the user, but in a translated form (e.g. not EPPO codes, but species names)</p>
             <ol>
-                <li>name</li>
-                <li>organization.name</li>
-                <li>organization.country</li>
-                <li>models[x].name</li>
-                <li>models[x].id</li>
-                <li>models[x].purpose</li>
-                <li>models[x].description</li>
-                <li>models[x].pests*</li>
-                <li>models[x].crops*</li>
-                <li>models[x].authors[x].name</li>
-                <li>models[x].authors[x].organization</li>
-                <li>models[x].valid_spatial.countries*</li>
-                <li>models[x].output.warning_status_interpretation</li>
+                <li><span class="dssParamName">name</span> ("DSS name")</li>
+                <li><span class="dssParamName">organization.name</span> ("Organization name")</li>
+                <li><span class="dssParamName">organization.country</span> ("Organization country")</li>
+                <li><span class="dssParamName">models[x].name</span> ("Model name")</li>
+                <li><span class="dssParamName">models[x].id</span> ("The list of DSS models" -&gt; item x -&gt; "Model ID)")</li>
+                <li><span class="dssParamName">models[x].purpose</span> ("The list of DSS models" -&gt; item x -&gt; "Purpose of the model")</li>
+                <li><span class="dssParamName">models[x].description</span> ("The list of DSS models" -&gt; item x -&gt; "Description")</li>
+                <li>(*) <span class="dssParamName">models[x].pests</span> ("The list of DSS models" -&gt; item x -&gt; "List of relevant pests (EPPO codes)")</li>
+                <li>(*) <span class="dssParamName">models[x].crops</span> ("The list of DSS models" -&gt; item x -&gt; "List of relevant crops (EPPO codes)")</li>
+                <li><span class="dssParamName">models[x].authors[x].name</span> ("The list of DSS models" -&gt; item x -&gt; "Author(s) of the model" -&gt; "Author name")</li>
+                <li><span class="dssParamName">models[x].authors[x].organization</span> ("The list of DSS models" -&gt; item x -&gt; "Author(s) of the model" -&gt; "Author organization")</li>
+                <li>(*) <span class="dssParamName">models[x].valid_spatial.countries</span> ("The list of DSS models" -&gt; item x -&gt; "List of countries (country codes)")</li>
+                <li><span class="dssParamName">models[x].output.warning_status_interpretation</span> ("The list of DSS models" -&gt; item x -&gt; "Warning status interpretation")</li>
                 
             </ol>
         </div>
