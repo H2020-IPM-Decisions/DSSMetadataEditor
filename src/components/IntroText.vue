@@ -4,9 +4,13 @@
             <p>
             This is a tool for (slightly more) easily editing the DSS metadata. 
             </p>
+            <p style="font-weight: bold;">
+                By DSS we mean an advisory system with at least one (prediction) model. 
+            For example: VIPS is a DSS wich has pest prediction models for Potato late blight, Carrot rust fly etc.
+            </p>
             <ol>
                 <li>
-                    <em>(If you have no previous data entered, skip this step)</em> To start editing, 
+                    <em>(If you have no previous data entered, skip to step 2)</em> To start editing, 
                     click the "Show YAML data" button. That opens up the text area where you can paste your current data.
                     Paste the data, and click "Load from YAML to form". The loading can take a few seconds, depending on
                     the complexity of the data.

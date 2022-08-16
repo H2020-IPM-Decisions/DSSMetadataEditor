@@ -2,8 +2,8 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "id": "https://platform.ipmdecisions.net/api/dss/rest/schema/dss",
     "type": "object",
-    "title": "The DSS schema",
-    "description": "The IPM Decisions DSS metadata. It describes the structure of the DSS information used in the IPM Decisions platform. A DSS consists of one or more pest prediction models, in addition to contact information about the DSS provider.",
+    "title": "The IPM Decisions DSS metadata schema",
+    "description": "The IPM Decisions DSS metadata. It describes the structure of the DSS information used in the IPM Decisions platform. A DSS consists of one or more pest prediction models (for instance: VIPS is a DSS that has models for Potato late blight, Apple scab, Carrot rust fly etc.), in addition to contact information about the DSS provider.",
     "required": [
         "models",
         "id",
@@ -173,8 +173,8 @@
             "additionalProperties": false
         },
         "models": {
-            "title": "The list of DSS models",
-            "description": "For each DSS model, create an item in this list",
+            "title": "The list of DSS pest prediction models",
+            "description": "For each DSS pest prediction model (there has to be at least one), create an item in this list. E.g. VIPS is a DSS that has models for Potato late blight, Apple scab, Carrot rust fly etc. ",
             "type": "array",
             "additionalItems": false,
             "required": ["id","name","version"],
@@ -283,7 +283,7 @@
                             {
                             	"type": "boolean",
                                 "title": "Validated for use in the platform",
-                            	"description":"If not true, the model is not ready to be used on the platform.",
+                            	"description":"If not true, the model is not ready to be used on the platform. This is to be decided by IPM Decisions.",
                             	"default": false
                             },
                             "pests": {
