@@ -58,7 +58,7 @@
             "id": "#/properties/languages",
             "type": "array",
             "title": "Supported languages",
-            "description": "A list of languages that the DSS supports. E.g. \"Norwegian\", \"English\"",
+            "description": "A list of languages that the DSS supports (translations). E.g. \"Norwegian\", \"English\"",
             "default": [],
             "examples": [
                 [
@@ -252,11 +252,11 @@
                                 "id": "#/properties/models/items/anyOf/0/properties/description",
                                 "type": "string",
                                 "title": "Description [7]",
-                                "description": "A concise description of the model",
+                                "description": "A concise description of the model. For example: \n THE PEST: Leaf blotch diseases of wheat can be caused by septoria tritici blotch (Zymoseptoria tritici) and staganospora nodorum blotch (Parastagonospora nodorum), which are both  favoured by wet conditions. \nTHE DECISION: Fungicide treatments may need to be applied between stem extension and ear emergence, mainly to protect the upper leaves.  \nTHE MODEL: The humidity model estimates risk of septoria tritici blotch infections in winter wheat. Risk of attack is assumed after 20 hours with continuous wetness. A wet hour is defined as minimum 0,2 mm precipitation in an hour or minimum 85% relative humidity. \nTHE PARAMETERS: Weather data from GS 31 are used. In addition, the dates of occurrence of growth stages 31 and 32 are entered. The model calculates the expected date for the other stages. This can be adjusted manually. Adding information on fungicide spraying dates is vital for the model. After spraying, the model assumes that the crop is protected for 10 days. The thresholds for number of wet hours and relative humidity can be adjusted manually.  \nSOURCE: Created by Aahus University and SEGES and released in Denmark in 2017. Tested in Lithuania, Norway, Sweden, Finland and Denmark in 2018 and 2019. \nASSUMPTIONS: septoria tritici blotch is present and periods with high humidity create risk for a damaging epidemic",
                                 "default": "",
                                 "format": "textarea",
                                 "examples": [
-                                    "The warning system model «Carrot rust fly temperature» is based on a Finnish temperature-based model (Markkula et al, 1998; Tiilikkala & Ojanen, 1999; Markkula et al, 2000). The model determines the start of the flight period for the 1st and 2nd generation of carrot rust fly based on accumuleted degree-days (day-degrees) over a base temperature of 5,0 °C. VIPS uses the model for the 1st generation only. \nStandard air temperature (temperature measured 2 m above ground) is used in the model. Degree-days are defined for this model as the sum of the difference between a base temperature of 5,0 °C and the mean temperature for all days with a temperature >5,0 °C, in other words (daily mean temperature – 5,0 °C) from 1 March (beginning when the ground has thawed).\n"
+                                    "THE PEST: Leaf blotch diseases of wheat can be caused by septoria tritici blotch (Zymoseptoria tritici) and staganospora nodorum blotch (Parastagonospora nodorum), which are both  favoured by wet conditions. \nTHE DECISION: Fungicide treatments may need to be applied between stem extension and ear emergence, mainly to protect the upper leaves.  \nTHE MODEL: The humidity model estimates risk of septoria tritici blotch infections in winter wheat. Risk of attack is assumed after 20 hours with continuous wetness. A wet hour is defined as minimum 0,2 mm precipitation in an hour or minimum 85% relative humidity. \nTHE PARAMETERS: Weather data from GS 31 are used. In addition, the dates of occurrence of growth stages 31 and 32 are entered. The model calculates the expected date for the other stages. This can be adjusted manually. Adding information on fungicide spraying dates is vital for the model. After spraying, the model assumes that the crop is protected for 10 days. The thresholds for number of wet hours and relative humidity can be adjusted manually.  \nSOURCE: Created by Aahus University and SEGES and released in Denmark in 2017. Tested in Lithuania, Norway, Sweden, Finland and Denmark in 2018 and 2019. \nASSUMPTIONS: septoria tritici blotch is present and periods with high humidity create risk for a damaging epidemic"
                                 ]
                             },
                             "citation": {
@@ -397,7 +397,7 @@
                                         "id": "#/properties/models/items/anyOf/0/properties/execution/properties/type",
                                         "type": "string",
                                         "title": "Type of execution",
-                                        "description": "E.g. \"ONTHEFLY\" or \"LINK\""
+                                        "description": "E.g. \"ONTHEFLY\" (Executable on the fly from a web service endpoint) or \"LINK\" (The user just gets a link to the DSS)"
                                     },
                                     "endpoint": {
                                         "id": "#/properties/models/items/anyOf/0/properties/execution/properties/endpoint",
@@ -420,37 +420,37 @@
                                     "input_schema_categories": {
                                     	"type": "object",
                                         "title": "Categories of the input schema properties",
-                                        "description": "Use these categories to hint to the platform how the input fields should be displayed in a form. Use their full path, e.g. \"configParameters.thresholdPrecipitation\"",
+                                        "description": "Use these categories to hint to the platform how the DSS input parameter fields should be displayed in a form. Use their full path, e.g. \"configParameters.thresholdPrecipitation\"",
                                     	"properties": {
                                     		"hidden": {
                                     			"type": "array",
                                     			"items": {"type":"string"},
                                                 "title": "List of hidden parameters",
-                                                "description": "These properties will not show in the form, their values will be provided by defaults"
+                                                "description": "These properties will not be visible to the user in the DSS input parameter form, their values will be provided by defaults"
                                     		},
                                     		"internal": {
                                     			"type": "array",
                                     			"items": {"type":"string"},
                                                 "title": "List of internal parameters",
-                                                "description": "Can be set as part of the adaptation dashboard"
+                                                "description": "Can be set by the researcher/advisor as part of the adaptation dashboard (one of the advanced dashboards in the platform), for changing the model's characteristics, e.g. for adaptation to a new region/country"
                                     		},
                                     		"triggered": {
                                     			"type": "array",
                                     			"items": {"type":"string"},
                                                 "title": "List of DSS triggered parameters",
-                                                "description": "Input to these properties may be triggered by the DSS. This can be e.g. field observations of the pest."
+                                                "description": "Input to these properties may be triggered by the model. This can be e.g. field observations that the model requires to proceed with its calculations/recommendations, and that it doesn't get automatically by the system."
                                     		},
                                     		"user_init": {
                                     			"type": "array",
                                     			"items": {"type":"string"},
                                                 "title": "User initiated parameters",
-                                                "description": "This is the default. These are values that the user is able to set as part of the initial set-up"
+                                                "description": "This is the default. These are values that the user is able to set as part of the initial set-up. E.g. sowing date."
                                     		},
                                     		"system": {
                                     			"type": "array",
                                     			"items": {"type":"string"},
                                                 "title": "System parameters",
-                                                "description": "Parameters that should be set by the IPM Decisions Platform. E.g. start date and end date for running the model."
+                                                "description": "Parameters that should be set by the IPM Decisions Platform. E.g. start date and end date for running the model. "
                                     		}
                                     	}
                                     	
@@ -520,7 +520,7 @@
                                     },
                                     "weather_data_period_start": {
 										"type": ["array","null"],
-										"title": "The start date of gathering weather data",
+										"title": "The start date of collecting weather data",
                                         "description" : "Array of definitions with the highest priority first",
                                         "default": [{"determined_by":"FIXED_DATE","value":"{CURRENT_YEAR}-01-01"}],
                                         "examples": [
@@ -545,7 +545,7 @@
 									},
 									"weather_data_period_end": {
 										"type": ["array","null"],
-										"title": "The end date of gathering weather data",
+										"title": "The end date of collecting weather data",
                                         "description" : "Array of definitions with the highest priority first",
                                         "default": {"determined_by":"FIXED_DATE","value":"{CURRENT_YEAR}-12-31"},
                                         "examples": [
@@ -704,13 +704,13 @@
                                     "chart_groups": {
                                     	"type": "array",
                                         "title": "Chart groups",
-                                        "description": "If you need to display several charts, group the parameters in this section",
+                                        "description": "For each chart that you want to display, group the parameters in this section",
                                     	"additionalItems": false,
                                     	"items": {
                                     		"properties": {
                                     			"id": {"type":"string","title": "Chart group ID"},
                                     			"title": {"type":"string", "title": "Chart group title"},
-                                    			"result_parameter_ids": {"type":"array","title": "Result parameter IDs","description": "Use the result parameters IDs specified elsewhere in the schema","items":{"type":"string"}}
+                                    			"result_parameter_ids": {"type":"array","title": "Result parameter IDs","description": "Use the result parameter IDs specified in the List of result parameters elsewhere (probably below) in the schema","items":{"type":"string"}}
                                     		}
                                     	}
                                     },

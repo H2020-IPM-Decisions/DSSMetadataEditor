@@ -2,11 +2,15 @@
     <div class="row">
         <div class="col">
             <p>
-            This is a tool for (slightly more) easily editing the DSS metadata. 
+            Last revision: 2022-08-18
             </p>
             <p style="font-weight: bold;">
-                By DSS we mean an advisory system with at least one (prediction) model. 
-            For example: VIPS is a DSS wich has pest prediction models for Potato late blight, Carrot rust fly etc.
+                This is a tool for (slightly more) easily editing the DSS metadata. 
+                Please note: By DSS we do in this context mean an advisory system with at least one (prediction) model 
+                (what many might consider a DSS in itself). For example: VIPS is a DSS wich has pest prediction models 
+                for Potato late blight, Carrot rust fly etc. This may differ from your understanding of what a DSS is. 
+                In the IPM Decisions platform, the "DSS" (as used here) is called "Source", and each "model" as used here
+                is called DSS.
             </p>
             <ol>
                 <li>
@@ -16,7 +20,7 @@
                     the complexity of the data.
                 </li>
                 <li>
-                    Edit the data in the form until it is correct
+                    Edit the data in the form ("The IPM Decisions DSS metadata schema" below) until it is correct
                 </li>
                 <li>
                     Click the "Load from form to YAML" button. The data from the form is now ready to be copied and pasted
@@ -45,6 +49,40 @@
                 <li><span class="dssParamName">models[x].output.warning_status_interpretation</span> ("The list of DSS models" -&gt; item x -&gt; "Warning status interpretation")</li>
                 
             </ol>
+            <h4>DSS Metadata for external link DSS</h4>
+            <p>
+                The external link DSS do not need as much information as the integrated DSS, since they do not take inputs or require weather data. 
+                External link DSSs should enter this information (if applicable):
+            </p>
+            <ul>
+                <li>DSS id</li>
+                <li>DSS version</li>
+                <li>DSS name</li>
+                <li>DSS web address</li>
+                <li>DSS organization info</li>
+                <li>Supported languages</li>
+                <li>
+                    For each model:
+                    <ul>
+                        <li>Model name</li>
+                        <li>Model ID</li>
+                        <li>Model version</li>
+                        <li>Type of decision</li>
+                        <li>Type of output</li>
+                        <li>Description URL</li>
+                        <li>Purpose of the model</li>
+                        <li>Description</li>
+                        <li>Citations</li>
+                        <li>Keywords</li>
+                        <li>List of relevant crops</li>
+                        <li style="font-weight: bold;">List of relevant pests(Not in Daves list)??</li>
+                        <li>Author(s) of the model</li>
+                        <li>Type of execution -- Set this to "LINK"</li>
+                        <li>Spatial (geographic) validity</li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
     </div>
 </template>
