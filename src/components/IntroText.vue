@@ -91,7 +91,6 @@
                             <li>Citations</li>
                             <li>Keywords</li>
                             <li>List of relevant crops</li>
-                            <li style="font-weight: bold;">List of relevant pests(Not in Daves list)??</li>
                             <li>Author(s) of the model</li>
                             <li>Type of execution -- Set this to "LINK"</li>
                             <li>Spatial (geographic) validity</li>
