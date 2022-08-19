@@ -50,26 +50,34 @@ function toggleYAMLField(event)
 
 </script>
 <template>
-<div >
-  <div class="row">
-    <div class="col">
-      <button role="button" class="btn btn-primary" @click="toggleYAMLField">{{YAMLField.label}}</button>
+<div>
+  <div style="border: 1px solid black; padding: 15px; background-color: #dddddd;">
+    <div class="row">
+      <div class="col">
+        <h2>Converting data between form and YAML</h2>
+      </div>
     </div>
-  </div>
-  <div class="row" v-if="YAMLField.visible">
-    <div class="col">
-      <textarea class="form-control"  style="width: 100%;height: 400px;" v-model="YAMLData"></textarea>
+    <div class="row">
+      <div class="col">
+        <button role="button" class="btn btn-primary" @click="toggleYAMLField">{{YAMLField.label}}</button>
+      </div>
     </div>
-  </div>
-  <div class="row"><div class="col">&nbsp;</div></div>
-  <div class="row">
-    <div class="col-sm-3">
-      <button class="btn btn-primary" role="button" @click="setEditorValue">Load from YAML to form</button>
+    <div class="row" v-if="YAMLField.visible">
+      <div class="col">
+        <textarea class="form-control"  style="width: 100%;height: 400px;" v-model="YAMLData"></textarea>
+      </div>
     </div>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-8">
-      <button class="btn btn-primary" role="button" @click="setYAMLValue">Load from form to YAML</button>
+    <div class="row"><div class="col">&nbsp;</div></div>
+    <div class="row">
+      <div class="col-sm-3">
+        <button class="btn btn-primary" role="button" @click="setEditorValue">Load from YAML to form</button>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-8">
+        <button class="btn btn-primary" role="button" @click="setYAMLValue">Load from form to YAML</button>
+      </div>
     </div>
+    
   </div>
   <div class="row"><div class="col">&nbsp;</div></div>
   <div class="row">
