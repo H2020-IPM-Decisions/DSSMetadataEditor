@@ -752,7 +752,7 @@
                                                 	"properties": {
                                                 		"default_visible": {"type": "boolean", "title": "Default visible?"},
                                                 		"unit": {"type": "string", "title": "Measuring unit", "description": "E.g. &deg;C"},
-                                                		"chart_type": {"type": "string", "title": "Chart type","enum": ["line","spline","area","areaspline","column","scatter"]},
+                                                		"chart_type": {"type": "string", "title": "Chart type","default": "line", "description": "See https://www.chartjs.org/docs/latest/charts/ for examples of chart types", "enum": ["bar","bubble","doughnut","pie","line","polarArea","radar","scatter"]},
                                                 		"color": {"type": "string", "title": "Color (hex code)", "description": "E.g. \"#ffff00\" Use a color picker online: https://www.w3schools.com/colors/colors_picker.asp"}
                                                 	},
                                                 	"required": ["default_visible","unit","chart_type","color"]
