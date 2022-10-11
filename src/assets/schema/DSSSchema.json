@@ -47,6 +47,7 @@
         "url": {
             "id": "#/properties/url",
             "type": "string",
+            "format": "url",
             "title": "The DSS web address (URL)",
             "description": "A URL to the DSS (outside of the IPM Decisions platform), e.g. \"https://www.vips-landbruk.no/\"",
             "default": "",
@@ -152,6 +153,7 @@
                 "email": {
                     "id": "#/properties/organization/properties/email",
                     "type": "string",
+                    "format": "email",
                     "title": "Organization email",
                     "description": "A contact email for the organization",
                     "default": "",
@@ -458,9 +460,10 @@
                                     "input_schema": {
                                         "id": "#/properties/models/items/anyOf/0/properties/execution/properties/input_schema",
                                         "type": "string",
-                                        "format": "textarea",
+                                        "format": "json",
                                         "title": "Input schema",
                                         "description": "This is the schema (http://json-schema.org/) that expresses the DSS's need for input data: Which parameters, what types (string, number, array etc) are they. Used by the platform to create a form for the user to set up the DSS for their field(s)"
+                                        
                                     }
                                 },
                                 "additionalProperties": false

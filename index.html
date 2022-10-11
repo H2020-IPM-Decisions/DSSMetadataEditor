@@ -8,6 +8,11 @@
   </head>
   <body>
     <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/ace.min.js"></script>
+    <script>
+      // Set ACE Editor basePath to same path as CDN Library.
+      window.ace.config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/");
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

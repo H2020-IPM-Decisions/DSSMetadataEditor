@@ -8,8 +8,9 @@ import yaml from "js-yaml";
 import DSSSchema from "/src/assets/schema/DSSSchema.json";
 //import DSSMetadata from "/src/test/SEGES.yaml"
 
-const YAMLData = ref("");
+//const YAMLData = ref("");
 const editor = ref({});
+const AceEditor = ref({});
 
 onMounted(()=>{
     
@@ -26,16 +27,18 @@ onMounted(()=>{
 
 
       });
+
+      AceEditor.value = ace.edit("theYAMLData");
+      AceEditor.value.session.setMode("ace/mode/yaml");
+
 })
 
 function setEditorValue(event){
-  //console.info(YAMLData.value);
-  editor.value.setValue(yaml.load(YAMLData.value));
+  editor.value.setValue(yaml.load(AceEditor.value.getValue()));
 }
 
 function setYAMLValue(event){
-  //console.info(YAMLData.value);
-  YAMLData.value = yaml.dump(editor.value.getValue());
+  AceEditor.value.setValue(yaml.dump(editor.value.getValue()));
 }
 
 const YAMLField = ref({
@@ -62,10 +65,8 @@ function toggleYAMLField(event)
         <button role="button" class="btn btn-primary" @click="toggleYAMLField">{{YAMLField.label}}</button>
       </div>
     </div>
-    <div class="row" v-if="YAMLField.visible">
-      <div class="col">
-        <textarea class="form-control"  style="width: 100%;height: 400px;" v-model="YAMLData"></textarea>
-      </div>
+    <div class="row" v-show="YAMLField.visible">
+      <div class="col" id="theYAMLData" style="height: 400px;"/>
     </div>
     <div class="row"><div class="col">&nbsp;</div></div>
     <div class="row">
