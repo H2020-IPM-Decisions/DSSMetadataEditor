@@ -3,7 +3,7 @@
     "id": "https://platform.ipmdecisions.net/api/dss/rest/schema/dss",
     "type": "object",
     "title": "The IPM Decisions DSS metadata schema",
-    "description": "The IPM Decisions DSS metadata. It describes the structure of the DSS information used in the IPM Decisions platform. A DSS consists of one or more pest prediction models (for instance: VIPS is a DSS that has models for Potato late blight, Apple scab, Carrot rust fly etc.), in addition to contact information about the DSS provider.",
+    "description": "The IPM Decisions DSS metadata describes the structure of the DSS information used in the IPM Decisions platform. A DSS consists of one or more pest prediction models (for instance: VIPS is a DSS that has models for Potato late blight, Apple scab, Carrot rust fly etc.), in addition to contact information about the DSS provider.",
     "required": [
         "models",
         "id",
@@ -263,8 +263,8 @@
                                 "id": "#/properties/models/items/anyOf/0/properties/citation",
                                 "type": ["string","null"],
                                 "title": "Citations",
-                                "description": "Any literature references for the model",
-                                "default": null,
+                                "description": "Any literature references for the model. If you have no citations, click \"string\" and change the type to null. The text field will disappear.",
+                                "default": "",
                                 "examples": [
                                     null
                                 ]
@@ -273,7 +273,7 @@
                                 "id": "#/properties/models/items/anyOf/0/properties/keywords",
                                 "type": ["string","null"],
                                 "title": "Keywords",
-                                "description": "Keywords to make this model searchable. E.g. \"foo, bar, mechanistic, regression\"",
+                                "description": "Keywords to make this model searchable. E.g. \"foo, bar, mechanistic, regression\". If you have no keywords, click \"string\" and change the type to null. The text field will disappear.",
                                 "default": "",
                                 "examples": [
                                     "foo, bar, mechanistic, regression"
@@ -403,19 +403,19 @@
                                         "id": "#/properties/models/items/anyOf/0/properties/execution/properties/endpoint",
                                         "type": "string",
                                         "title": "Web service endpoint",
-                                        "description": "Assuming that the model can be run on the fly, please state the URL to the web service endpoint"
+                                        "description": "Assuming that the model can be run on the fly (Type of execution='ONTHEFLY'), please state the URL to the web service endpoint, i.e. the URL that the platform uses to run the model, passing input data and receiving result data."
                                     },
                                     "form_method": {
                                         "id": "#/properties/models/items/anyOf/0/properties/execution/properties/form_method",
                                         "type": "string",
                                         "title": "Web service HTTP method",
-                                        "description": "One of the HTTP methods (GET, POST, UPDATE)"
+                                        "description": "One of the HTTP methods (GET, POST, UPDATE). Read more here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
                                     },
                                     "content_type": {
                                         "id": "#/properties/models/items/anyOf/0/properties/execution/properties/content_type",
                                         "type": "string",
-                                        "title": "MIME type",
-                                        "description": "The MIME type (https://www.iana.org/assignments/media-types/media-types.xhtml) of the data sent to the DSS web service endpoint. E.g. \"application/json\""
+                                        "title": "Content type",
+                                        "description": "The Content type, specified as a MIME type (https://www.iana.org/assignments/media-types/media-types.xhtml), of the data sent to the DSS web service endpoint. E.g. \"application/json\" tells that data should be sent as Json (https://en.wikipedia.org/wiki/JSON) and not e.g. XML (https://en.wikipedia.org/wiki/XML)"
                                     },
                                     "input_schema_categories": {
                                     	"type": "object",
@@ -460,7 +460,7 @@
                                         "type": "string",
                                         "format": "textarea",
                                         "title": "Input schema",
-                                        "description": "This is the schema that expresses the DSS's need for input data: Which parameters, what types (string, number, array etc) are they. Used by the platform to create a form for the user to set up the DSS for their field(s)"
+                                        "description": "This is the schema (http://json-schema.org/) that expresses the DSS's need for input data: Which parameters, what types (string, number, array etc) are they. Used by the platform to create a form for the user to set up the DSS for their field(s)"
                                     }
                                 },
                                 "additionalProperties": false
@@ -469,7 +469,7 @@
                                 "id": "#/properties/models/items/anyOf/0/properties/input",
                                 "type": "object",
                                 "title": "Description of input",
-                                "description": "Description of important input parameters such as weather data and field observations.",
+                                "description": "Description of important input parameters such as weather data and field observations. To configure field observations, change the type of \"Field observation\" from \"null\" to \"object\"",
                                 "default": {},
                                 "examples": [
                                     {
@@ -677,16 +677,14 @@
                                     }
                                 ],
                                 "required": [
-                                    "warning_status_interpretation",
-                                    "result_parameters",
-                                    "chart_groups"
+                                    "warning_status_interpretation"
                                 ],
                                 "properties": {
                                     "warning_status_interpretation": {
                                         "id": "#/properties/models/items/anyOf/0/properties/output/properties/warning_status_interpretation",
                                         "type": "array",
                                         "title": "Warning status interpretation [13]",
-                                        "description": "A list of texts helping the user to interpret the different warning statuses (green, yellow, red) in the given context. Ordering is important. The items relate to the statuses in this order: [WARNING NOT APPLICABLE, MISSING DATA, GREEN STATUS, YELLOW STATUS, RED STATUS] ",
+                                        "description": "A list of texts helping the user to interpret the different warning statuses (green, yellow, red) in the given context. Ordering is important. Please provide text as follows: Item 1: WARNING NOT APPLICABLE; Item 2:  MISSING DATA; Item 3: GREEN STATUS; Item 4: YELLOW STATUS; Item 5: RED STATUS. If supporting text is not relevant for a given status for this model, put ‘NA’ against this item.",
                                         "additionalItems": false,
                                         "minItems": 5,
                                         "maxItems": 5,
@@ -699,17 +697,19 @@
                                     },
                                     "chart_heading": {
                                         "title": "Chart heading",
-                                		"type": ["string","null"]
+                                		"type": ["string","null"],
+                                        "default": "",
+                                        "description": "Heading that encompasses all charts for this DSS model."
                                 	},
                                     "chart_groups": {
                                     	"type": "array",
                                         "title": "Chart groups",
-                                        "description": "For each chart that you want to display, group the parameters in this section",
+                                        "description": "For each chart that you want to display, group the parameters in this section.",
                                     	"additionalItems": false,
                                     	"items": {
                                     		"properties": {
-                                    			"id": {"type":"string","title": "Chart group ID"},
-                                    			"title": {"type":"string", "title": "Chart group title"},
+                                    			"id": {"type":"string", "pattern": "^[^\\s]*$", "title": "Chart group ID", "description": "The chart's ID - used to reference it e.g. when translating. Example: \"G1\". Must not contain spaces."},
+                                    			"title": {"type":"string", "title": "Chart group title", "description": "The chart title as displayed to the user"},
                                     			"result_parameter_ids": {"type":"array","title": "Result parameter IDs","description": "Use the result parameter IDs specified in the List of result parameters elsewhere (probably below) in the schema","items":{"type":"string"}}
                                     		}
                                     	}
@@ -718,7 +718,7 @@
                                         "id": "#/properties/models/items/anyOf/0/properties/output/properties/result_parameters",
                                         "type": "array",
                                         "title": "List of result parameters",
-                                        "description": "The model outputs are a timeseries with key-value pairs. These are unique for each DSS model. Specify here, please.",
+                                        "description": "The model outputs are a timeseries with DSS model specific key-value pairs. You can think of it as a series of chronologically ordered rows with named columns. The key would be the equivalent of the column name (e.g. in Excel [A,B,(...)]), except that you can name it a bit more meaningfully - and you can add a title, a description and chart rendering information as well. Specify here, please.",
                                         "additionalItems": false,
                                         "items": {
                                             "id": "#/properties/models/items/anyOf/0/properties/output/properties/result_parameters/items",

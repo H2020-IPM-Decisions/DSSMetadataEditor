@@ -2,41 +2,49 @@
     <div class="row">
         <div class="col">
             <p>
-            Last revision: 2022-08-19
+            Last revision: 2022-10-10
             </p>
             <p style="font-weight: bold;">
                 This is a tool for quick editing of the Decision Support System (DSS) metadata. 
                 Please note: Here "DSS" means an an advisory system with one or more prediction models. For example: 
-                VIPS (https://www.vips-landbruk.no/) is a DSS wich has pest prediction models 
+                VIPS (https://www.vips-landbruk.no/) is a DSS which has pest prediction models 
                 for several pests (e.g. Potato late blight, Carrot rust fly etc.).
                 In the IPM Decisions platform, the "DSS" (as used here) is called "Source", and each "model" as used here
                 is called DSS.
             </p>
             <div style="border: 1px solid black; padding: 15px 15px 15px 35px; margin-bottom: 15px; background-color: #dddddd;">
                 <h2>Steps to complete the editing of the file</h2>
-                <ol >
-                    <li>
-                        <em style="font-weight:bold;">(If you have no previous data entered, skip to step 2)</em> To start editing, 
-                        click the "Show YAML data" button. This opens up the text area where you can paste your current data.
-                        Your current data would come from a pure text file whose name ends with ".yaml". Use e.g. Notepad to open it,
-                        copy the data from the file, paste it into the text area and click "Load from YAML to form". 
-                        The loading can take a few seconds, depending on the complexity of the data.
-                    </li>
-                    <li>
-                        Edit the data in the form ("The IPM Decisions DSS metadata schema" below) until it is correct. See the "Help/documentation" section below 
-                        for how to do that.
-                    </li>
-                    <li>
-                        Click the "Load from form to YAML" button. The text area (visible when you click the "Show YAML data" button) above the form
-                        is then filled with the YAML(text) representation of the data. This is what the DSS API uses internally. These text data 
-                        must be copied from the text field and pasted into a YAML file, which is a pure text file that has a filename that ends with ".yaml",
-                        ideally [YOUR_DSS_NAME].yaml, for instance "dk.seges.yaml". If you don't have this already, create a file named [YOUR_DSS_NAME].yaml. This can be
-                        done in any simple text editor like e.g. Notepad.
-                    </li>
-                    <li>
-                        Send this file to your IPM Decisions technical contact.
-                    </li>
-                </ol>
+                <p><em style="font-weight:bold;">If this is the first time you are creating IPM Decisions metadata for a DSS, skip to step 2.</em></p>
+                <h3>Step 1 - Import data from existing metadata file (YAML format)</h3>
+                <p>
+                    To start editing an existing metadata file, click the "Show YAML data" button in the "Converting data between form and YAML" box. 
+                    This opens up a text area where you can paste your current data.
+                    Your current data would come from a pure text file whose name ends with ".yaml". Use e.g. Notepad to open it,
+                    copy the data from the file, paste it into the text area and click "Load from YAML to form". 
+                    The loading can take a few seconds, depending on the complexity of the data, and will auto-fill "The IPM Decisions DSS 
+                    metadata schema" below. If you have no previous data entered, skip to step 2.
+                </p>
+                <h3>Step 2 - Enter data in the proforma (New DSSs start here)</h3>
+                <p>
+                    Fill/edit the data in "The IPM Decisions DSS metadata schema" below until it is correct. Expand the "Help/documentation" section below 
+                    for detailed instructions.
+                </p>
+                <h3>Step 3 - Export data from proforma to YAML file</h3>
+                <p>
+                    Return to the "Converting data between form and YAML" box, and click the "Load from form to YAML" button. The 
+                    text area (visible when you click the "Show YAML data" button) above the form
+                    is then filled with the YAML(text) representation of the data. This is what the DSS API requires to run your model(s) 
+                    internally. These text data must be copied from the text field and pasted into a YAML file, which is a pure text file 
+                    that has a filename that ends with ".yaml", ideally named [YOUR_DSS_NAME].yaml, for instance "dk.seges.yaml". If you don't have this already, create a file named [YOUR_DSS_NAME].yaml. This can be
+                    done in any simple text editor like e.g. Notepad. <em>Please note that you cannot use advanced word processors like Word 
+                        or LibreOffice Write, since they add formatting codes behind the scenes that are invisible to the user, but makes the file
+                    unparseable by the application.</em>
+                </p>
+                <h3>Step 4</h3>
+                <p>
+                    Send this file to your IPM Decisions technical contact.
+                </p>
+                
             </div>
             <h2>Help/documentation 
                 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
