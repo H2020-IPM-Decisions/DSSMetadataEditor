@@ -18,7 +18,8 @@
             "id": "#/properties/id",
             "type": "string",
             "title": "The DSS ID",
-            "description": "A unique ID for this DSS, e.g. \"no.nibio.vips\"",
+            "description": "A unique ID for this DSS, e.g. \"no.nibio.vips\". No spaces allowed",
+            "pattern": "^[^\\s]*$", 
             "default": "",
             "examples": [
                 "no.nibio.vips"
@@ -28,8 +29,9 @@
             "id": "#/properties/version",
             "type": "string",
             "title": "The DSS version",
-            "description": "The version number of the DSS. Change this when a DSS (or this metadata describing it) changes significantly, so that the platform can distinguish between different configurations.",
+            "description": "The version number of the DSS. Change this when a DSS (or this metadata describing it) changes significantly, so that the platform can distinguish between different configurations. No spaces allowed.",
             "default": "",
+            "pattern": "^[^\\s]*$", 
             "examples": [
                 "2.0"
             ]
@@ -164,6 +166,7 @@
                 "url": {
                     "id": "#/properties/organization/properties/url",
                     "type": "string",
+                    "format": "url",
                     "title": "Organization web address (URL)",
                     "description": "A URL to the organization, e.g. \"https://www.nibio.no/\"",
                     "default": "",
@@ -194,8 +197,9 @@
                             "id": {
                                 "type": "string",
                                 "title": "Model ID [5]",
-                                "description": "A unique ID for the model in the namespace of the DSS. E.g. \"PSILARTEMP\"",
+                                "description": "A unique ID for the model in the namespace of the DSS. E.g. \"PSILARTEMP\". No spaces allowed.",
                                 "default": "",
+                                "pattern": "^[^\\s]*$", 
                                 "examples": [
                                     "PSILARTEMP"
                                 ]
@@ -204,8 +208,9 @@
                                 "id": "#/properties/models/items/anyOf/0/properties/version",
                                 "type": "string",
                                 "title": "Model version",
-                                "description": "Use this for uniquely versioning the model (over time). If the input schema has changed, the version number must be updated, so that the platform can keep track of the changes.",
+                                "description": "Use this for uniquely versioning the model (over time). If the input schema has changed, the version number must be updated, so that the platform can keep track of the changes. No spaces allowed",
                                 "default": "",
+                                "pattern": "^[^\\s]*$", 
                                 "examples": [
                                     "1.0"
                                 ]
@@ -233,6 +238,7 @@
                             "description_URL": {
                                 "id": "#/properties/models/items/anyOf/0/properties/description_URL",
                                 "type": "string",
+                                "format": "url",
                                 "title": "Description URL",
                                 "description": "A URL (web address) to more description of the model, e.g. on the DSS provider's web site",
                                 "default": "",
@@ -292,7 +298,7 @@
                                 "id": "#/properties/models/items/anyOf/0/properties/pests",
                                 "type": "array",
                                 "title": "List of relevant pests (EPPO codes) [8]",
-                                "description": "A list of EPPO codes (https://gd.eppo.int/) for the pests predicted by this model. E.g. [\"PSILRO\"]",
+                                "description": "A list of EPPO codes (https://gd.eppo.int/) for the pests predicted by this model. E.g. [\"PSILRO\"]. No spaces allowed",
                                 "default": [],
                                 "examples": [
                                     [
@@ -302,14 +308,15 @@
                                 "additionalItems": false,
                                 "items": {
                                     "id": "#/properties/models/items/anyOf/0/properties/pests/items",
-                                    "type" : "string"
+                                    "type" : "string",
+                                    "pattern": "^[^\\s]*$"
                                 }
                             },
                             "crops": {
                                 "id": "#/properties/models/items/anyOf/0/properties/crops",
                                 "type": "array",
                                 "title": "List of relevant crops (EPPO codes) [9]",
-                                "description": "A list of EPPO codes (https://gd.eppo.int/) for the crops in which this model predicts pests. E.g. [\"DAUCS\"]",
+                                "description": "A list of EPPO codes (https://gd.eppo.int/) for the crops in which this model predicts pests. E.g. [\"DAUCS\"]. No spaces allowed",
                                 "default": [],
                                 "examples": [
                                     [
@@ -319,7 +326,8 @@
                                 "additionalItems": false,
                                 "items": {
                                     "id": "#/properties/models/items/anyOf/0/properties/crops/items",
-                                    "type" : "string"
+                                    "type" : "string",
+                                    "pattern": "^[^\\s]*$"
                                 }
                             },
                             "authors": {
@@ -404,6 +412,7 @@
                                     "endpoint": {
                                         "id": "#/properties/models/items/anyOf/0/properties/execution/properties/endpoint",
                                         "type": "string",
+                                        "format": "url",
                                         "title": "Web service endpoint",
                                         "description": "Assuming that the model can be run on the fly (Type of execution='ONTHEFLY'), please state the URL to the web service endpoint, i.e. the URL that the platform uses to run the model, passing input data and receiving result data."
                                     },
@@ -622,6 +631,7 @@
                                     "geoJSON": {
                                         "id": "#/properties/models/items/anyOf/0/properties/valid_spatial/properties/geoJSON",
                                         "title": "GeoJSON description of valid areas",
+                                        "format": "json",
                                         "description": "If you prefer specifying areas using GIS polygons, then use GeoJSON to describe it: https://geojson.org/. Draw polygons here: http://geojson.io",
                                         "type": "string"
                                     }
@@ -756,7 +766,7 @@
                                                 		"default_visible": {"type": "boolean", "title": "Default visible?"},
                                                 		"unit": {"type": "string", "title": "Measuring unit", "description": "E.g. &deg;C"},
                                                 		"chart_type": {"type": "string", "title": "Chart type","default": "line", "description": "See https://www.chartjs.org/docs/latest/charts/ for examples of chart types", "enum": ["bar","bubble","doughnut","pie","line","polarArea","radar","scatter"]},
-                                                		"color": {"type": "string", "title": "Color (hex code)", "description": "E.g. \"#ffff00\" Use a color picker online: https://www.w3schools.com/colors/colors_picker.asp"}
+                                                		"color": {"type": "string", "format": "color", "title": "Color (hex code)", "description": "E.g. \"#ffff00\" Use a color picker online: https://www.w3schools.com/colors/colors_picker.asp"}
                                                 	},
                                                 	"required": ["default_visible","unit","chart_type","color"]
                                                 }
