@@ -1,18 +1,32 @@
+<script setup>
+    import screenshotPDFUrl from "../assets/documents/platform_screenshots.pdf"
+</script>
+<style>
+  .infoBox {
+    border: 1px solid black; 
+    padding: 15px 15px 15px 35px; 
+    margin-bottom: 15px; 
+    background-color: #eeeeee; 
+    border-radius: .25em;
+  }
+
+</style>
 <template>
     <div class="row">
         <div class="col">
             <p>
-            Last revision: 2022-10-10
+            Last revision: 2022-10-12
             </p>
             <p style="font-weight: bold;">
                 This is a tool for quick editing of the Decision Support System (DSS) metadata. 
                 Please note: Here "DSS" means an an advisory system with one or more prediction models. For example: 
-                VIPS (https://www.vips-landbruk.no/) is a DSS which has pest prediction models 
-                for several pests (e.g. Potato late blight, Carrot rust fly etc.).
+                <a href="https://www.vips-landbruk.no/" target="new">VIPS</a> is a DSS which has pest prediction models 
+                for several pests (e.g. <a href="https://www.vips-landbruk.no/forecasts/models/NEGPROGMOD/" target="new">Potato late blight</a>, 
+                <a href="https://www.vips-landbruk.no/forecasts/models/PSILARTEMP/" target="new">Carrot rust fly</a> etc.).
                 In the IPM Decisions platform, the "DSS" (as used here) is called "Source", and each "model" as used here
                 is called DSS.
             </p>
-            <div style="border: 1px solid black; padding: 15px 15px 15px 35px; margin-bottom: 15px; background-color: #dddddd;">
+            <div class="infoBox">
                 <h2>Steps to complete the editing of the file</h2>
                 <p><em style="font-weight:bold;">If this is the first time you are creating IPM Decisions metadata for a DSS, skip to step 2.</em></p>
                 <h3>Step 1 - Import data from existing metadata file (YAML format)</h3>
@@ -50,13 +64,16 @@
                 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
                 <label class="btn btn-primary" for="btn-check" onclick="this.innerHTML=this.innerHTML == ('+') ? '-':'+'; document.getElementById('help').style.display=this.innerHTML == ('+') ? 'none':'block';">+</label>
             </h2>
-            <div id="help" style="display: none;">
+            <div id="help" class="infoBox" style="display:none;">
                 <p>
-                Fields that are visible to users in the platform are labeled with reference [#] to other documentation 
-                (<strong>TODO</strong>) with screen shots with corresponding labels.
+                Fields that are visible to users in the platform are labeled with reference [#] to <a :href="screenshotPDFUrl" target="new">this document</a>, 
+                with screen shots with corresponding labels. For instance, this field (below)
                 </p>
+                <p><img src="@/assets/images/metadata_help_1.png"/></p>
+                <p>...is shown on the platform as illustrated in the document screenshot below</p>
+                <p><img src="@/assets/images/metadata_help_2.png"/></p>
                 <h4>Index of user visible parameters</h4>
-                <p>Parameters marked (*) appear to the user, but in a translated form (e.g. not EPPO codes, but species names)</p>
+                <p>Parameters marked (*) appear to the user, but transformed from codes to user known entities (e.g. not EPPO codes, but species names)</p>
                 <ol>
                     <li><span class="dssParamName">name</span> ("DSS name")</li>
                     <li><span class="dssParamName">organization.name</span> ("Organization name")</li>
@@ -71,7 +88,6 @@
                     <li><span class="dssParamName">models[].authors[].organization</span> ("The list of DSS models" -&gt; "Author(s) of the model" -&gt; "Author organization")</li>
                     <li>(*) <span class="dssParamName">models[].valid_spatial.countries</span> ("The list of DSS models" -&gt; "List of countries (country codes)")</li>
                     <li><span class="dssParamName">models[].output.warning_status_interpretation</span> ("The list of DSS models" -&gt; "Warning status interpretation")</li>
-                    
                 </ol>
                 <h4>DSS Metadata for external link DSS</h4>
                 <p>

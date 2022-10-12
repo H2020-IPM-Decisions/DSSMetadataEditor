@@ -3,7 +3,7 @@
     "id": "https://platform.ipmdecisions.net/api/dss/rest/schema/dss",
     "type": "object",
     "title": "The IPM Decisions DSS metadata schema",
-    "description": "The IPM Decisions DSS metadata describes the structure of the DSS information used in the IPM Decisions platform. A DSS consists of one or more pest prediction models (for instance: VIPS is a DSS that has models for Potato late blight, Apple scab, Carrot rust fly etc.), in addition to contact information about the DSS provider.",
+    "description": "The IPM Decisions describes the structure of the DSS information used in the IPM Decisions platform. A DSS consists of one or more pest prediction models (for instance: VIPS is a DSS that has models for Potato late blight, Apple scab, Carrot rust fly etc.), in addition to contact information about the DSS provider.",
     "required": [
         "models",
         "id",

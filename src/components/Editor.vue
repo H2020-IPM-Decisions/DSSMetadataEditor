@@ -6,30 +6,39 @@ import { JSONEditor } from "@json-editor/json-editor/dist/jsoneditor";
 import { onMounted, ref } from "vue";
 import yaml from "js-yaml";
 import DSSSchema from "/src/assets/schema/DSSSchema.json";
-//import DSSMetadata from "/src/test/SEGES.yaml"
 
-//const YAMLData = ref("");
 const editor = ref({});
 const AceEditor = ref({});
 
 onMounted(()=>{
+
+  // Overriding HTML sanitizing for descriptions - since we have control over the Schema
+  JSONEditor.AbstractTheme.prototype.getDescription = function(text) {
+    const el = document.createElement('p')
+    el.innerHTML = text;
+    return el
+  };
+  
+  // Initialize the editor with a JSON schema
+  editor.value = new JSONEditor(document.getElementById('editor_holder'),{
     
-    // Initialize the editor with a JSON schema
-      editor.value = new JSONEditor(document.getElementById('editor_holder'),{
-        
-        schema: DSSSchema,
-        ajax: true, // If true, JSON Editor will load external URLs in $ref via ajax.
-        theme: "bootstrap4",
-        iconlib: "fontawesome5",
-        disable_edit_json: true, // If true, remove all Edit JSON buttons from objects.
-        disable_properties: true, // If true, remove all Edit Properties buttons from objects.
-        remove_button_labels: true // Display only icons in buttons. This works only if iconlib is set.
+    schema: DSSSchema,
+    ajax: true, // If true, JSON Editor will load external URLs in $ref via ajax.
+    theme: "bootstrap4",
+    iconlib: "fontawesome5",
+    disable_edit_json: true, // If true, remove all Edit JSON buttons from objects.
+    disable_properties: true, // If true, remove all Edit Properties buttons from objects.
+    remove_button_labels: true // Display only icons in buttons. This works only if iconlib is set.
 
 
-      });
+  });
 
-      AceEditor.value = ace.edit("theYAMLData");
-      AceEditor.value.session.setMode("ace/mode/yaml");
+  // The AceEditor is included from CDN in index.html, it appears clunky to do it via vuejs
+  // It's used for 
+  // 1) Json highlighting in string fields where format=json. This is set automatically by json-editor
+  // 2) YAML highlighting in the data in/out text field. This is configured below
+  AceEditor.value = ace.edit("theYAMLData");
+  AceEditor.value.session.setMode("ace/mode/yaml");
 
 })
 
@@ -54,7 +63,7 @@ function toggleYAMLField(event)
 </script>
 <template>
 <div>
-  <div style="border: 1px solid black; padding: 15px; background-color: #dddddd;">
+  <div class="infoBox">
     <div class="row">
       <div class="col">
         <h2>Converting data between form and YAML</h2>
@@ -65,8 +74,8 @@ function toggleYAMLField(event)
         <button role="button" class="btn btn-primary" @click="toggleYAMLField">{{YAMLField.label}}</button>
       </div>
     </div>
-    <div class="row" v-show="YAMLField.visible">
-      <div class="col" id="theYAMLData" style="height: 400px;"/>
+    <div class="row" v-show="YAMLField.visible" style="padding: 15px;">
+      <div class="col" id="theYAMLData" style="height: 400px;border: 1px solid black; border-radius: 0.25em;"/>
     </div>
     <div class="row"><div class="col">&nbsp;</div></div>
     <div class="row">
@@ -87,8 +96,4 @@ function toggleYAMLField(event)
 </div>
 </template>
 
-<style>
-  textarea {
-    font-family: 'Courier New', Courier, monospace !important;
-  }
-</style>
+
