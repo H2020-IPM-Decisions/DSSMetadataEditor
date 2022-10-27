@@ -1,10 +1,8 @@
 # IPMDSSMetadataEditor
 
-This template should help get you started developing with Vue 3 in Vite.
+This project was initialized by following [these instructions](https://vuejs.org/guide/quick-start.html#creating-a-vue-application),
+using the default config settings.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## Customize configuration
 
