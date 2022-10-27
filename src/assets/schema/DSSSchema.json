@@ -194,10 +194,13 @@
             "title": "The list of DSS pest prediction models",
             "description": "For each DSS pest prediction model (there has to be at least one), create an item in this list. E.g. VIPS is a DSS that has models for Potato late blight, Apple scab, Carrot rust fly etc. ",
             "type": "array",
+            "format": "tabs",
             "additionalItems": false,
             "required": ["id","name","version"],
             "items": {
                 "type": "object",
+                "title": "DSS Model",
+                "headerTemplate": "{{ self.name }}",
                 "properties": {
                             "name": {
                                 "title": "Model name [4]",
