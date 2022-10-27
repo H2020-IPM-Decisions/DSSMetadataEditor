@@ -30,7 +30,7 @@ onMounted(()=>{
     disable_properties: true, // If true, remove all Edit Properties buttons from objects.
     remove_button_labels: true // Display only icons in buttons. This works only if iconlib is set.
 
-
+    
   });
 
   // The AceEditor is included from CDN in index.html, it appears clunky to do it via vuejs
