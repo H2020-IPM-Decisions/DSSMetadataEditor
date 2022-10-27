@@ -10,6 +10,7 @@
         "version",
         "name",
         "url",
+        "logo_url",
         "languages",
         "organization"
     ],
@@ -55,6 +56,18 @@
             "default": "",
             "examples": [
                 "https://www.vips-landbruk.no/"
+            ]
+        },
+        "logo_url": {
+            "id": "#/properties/logo_url",
+            "type": "string",
+            "format": "url",
+            "title": "URL to the DSS provider's logo",
+            "description": "A URL to the DSS provider's logo. It might be e.g. at the DSS provider's web site or it might be located in the DSS API. In the latter case, it will only have a relative path, e.g.  '/dss/logo/VIPSLogo.png'",
+            "default": "",
+            "examples": [
+                "/dss/logo/VIPSLogo.png",
+                "https://www.vips-landbruk.no/static/images/logo_vips_newest.png"
             ]
         },
         "languages": {
