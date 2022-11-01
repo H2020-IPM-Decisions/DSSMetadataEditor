@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col">
             <p>
-            Last revision: 2022-10-12
+            Last revision: 2022-11-01
             </p>
             <p style="font-weight: bold;">
                 This is a tool for quick editing of the Decision Support System (DSS) metadata. 
@@ -66,9 +66,7 @@
             </h2>
             <div id="help" class="infoBox" style="display:none;">
                 <h3>Searching in the proforma</h3>
-                <p>To search in the proforma, use the browser's search function. In most browsers you can activate it by typing CTRL-F. Below is a screenshot from Firefox.</p>
-                <p><img src="@/assets/images/metadata_help_0.png" style="border: 4px solid white;"/></p>
-                <h3>Fields visible to the user</h3>
+                <p><strong>TIP:</strong> To search in the proforma, use the browser's search function. In most browsers you can activate it by typing CTRL-F.</p>
                 <p>
                 Fields that are visible to users in the platform are labeled with reference [#] to <a :href="screenshotPDFUrl" target="new">this document</a>, 
                 with screen shots with corresponding labels. For instance, this field (below)
