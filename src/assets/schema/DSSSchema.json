@@ -721,15 +721,15 @@
                                         "id": "#/properties/models/items/anyOf/0/properties/output/properties/warning_status_interpretation",
                                         "type": "array",
                                         "title": "Warning status interpretation [13]",
-                                        "description": "A list of texts helping the user to interpret the different warning statuses (green, yellow, red) in the given context. Ordering is important. Please provide text as follows: Item 1: WARNING NOT APPLICABLE; Item 2:  MISSING DATA; Item 3: GREEN STATUS; Item 4: YELLOW STATUS; Item 5: RED STATUS. If supporting text is not relevant for a given status for this model, put ‘NA’ against this item.",
+                                        "description": "A list of texts helping the user to interpret the different warning statuses (green, yellow, red) in the given context. Ordering is important. Please provide text as follows: Status 1: WARNING NOT APPLICABLE; Status 2:  MISSING DATA; Status 3: GREEN STATUS; Status 4: YELLOW STATUS; Status 5: RED STATUS. If supporting text is not relevant for a given status for this model, put ‘NA’ against this item. The texts are presented in various places in the platform, both separately (explanation and recommended action) and combined.",
                                         "additionalItems": false,
                                         "minItems": 5,
                                         "maxItems": 5,
                                         "items": {
                                             "title": "Status",
                                         	"properties": {
-                                        		"explanation": {"type":"string", "title": "Explanation"},
-                                        		"recommended_action": {"type":"string", "title": "Recommended action"}
+                                        		"explanation": {"type":"string", "title": "Explanation", "description": "What were the conditions that led to this warning status?"},
+                                        		"recommended_action": {"type":"string", "title": "Recommended action", "description": "What is the recommended action given this warning status?"}
                                         	}
                                         }
                                     },
