@@ -65,7 +65,6 @@
                 <label class="btn btn-primary" for="btn-check" onclick="this.innerHTML=this.innerHTML == ('+') ? '-':'+'; document.getElementById('help').style.display=this.innerHTML == ('+') ? 'none':'block';">+</label>
             </h2>
             <div id="help" class="infoBox" style="display:none;">
-                <h3>Searching in the proforma</h3>
                 <p><strong>TIP:</strong> To search in the proforma, use the browser's search function. In most browsers you can activate it by typing CTRL-F.</p>
                 <p>
                 Fields that are visible to users in the platform are labeled with reference [#] to <a :href="screenshotPDFUrl" target="new">this document</a>, 
