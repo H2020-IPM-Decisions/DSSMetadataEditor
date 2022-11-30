@@ -214,9 +214,9 @@
                             "id": {
                                 "type": "string",
                                 "title": "Model ID [5]",
-                                "description": "A unique ID for the model in the namespace of the DSS. E.g. \"PSILARTEMP\". No spaces allowed.",
+                                "description": "A unique ID for the model in the namespace of the DSS. E.g. \"PSILARTEMP\". One word only, no spaces allowed.",
                                 "default": "",
-                                "pattern": "^[^\\s]*$", 
+                                "pattern": "^[a-zA-Z0-9_]+$", 
                                 "examples": [
                                     "PSILARTEMP"
                                 ]
