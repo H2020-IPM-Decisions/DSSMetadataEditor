@@ -18,8 +18,8 @@
     "yaml-loader": "^0.8.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
-    "vite": "^6.1.6",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "vite": "^6.3.5",
     "vue-cli-plugin-yaml-loader": "~1.0.0"
   }
 }
