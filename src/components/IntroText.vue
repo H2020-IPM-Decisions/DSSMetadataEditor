@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col">
             <p>
-            Last revision: 2022-11-01
+            Last revision: 2025-02-05
             </p>
             <p style="font-weight: bold;">
                 This is a tool for quick editing of the Decision Support System (DSS) metadata. 
